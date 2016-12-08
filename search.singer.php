@@ -4,7 +4,12 @@ $db = new PDO('mysql:host=localhost;dbname=musicPlanet;charset=utf8','root','roo
 $db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $db -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-if( isset($_GET['searchID']) ) {
+//if no singer is set, redirect to search page
+if( !isset($_GET['searchID']) ) {
+
+	header('Location: search.php');
+
+} else {
 	$searchID = $_GET['searchID'];
 
 	$sql = "SELECT * FROM singers
@@ -30,6 +35,7 @@ if( isset($_GET['searchID']) ) {
 	} else {
 		$searchSinger = $searchComments[0];
 	}; //end if searchComments empty
+}; //end if searchID set
 
 ?>
 
@@ -77,9 +83,6 @@ if( isset($_GET['searchID']) ) {
 		};
 		echo "</div>";
 
-	} else {
-		$searchID = 0;
-	};
 	?>
 
 	<!-- Takes in user input comments -->
