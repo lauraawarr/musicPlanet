@@ -18,6 +18,8 @@ if( isset($_GET['searchName']) ) {
 	$query -> execute( array(':name' => "%".$searchName."%"));
 	$searchData = $query->fetchAll(PDO::FETCH_ASSOC);
 
+	$header = "Search Results";
+
 } else {
 	$searchData = [];
 };
@@ -32,9 +34,14 @@ if( isset($_GET['genreID']) ) {
 			ON (genres.genre_id = genres_to_singers.genre_id)
 			WHERE genres.genre_id = :genreID";
 	$query = $db->prepare( $sql );
-	//$query->bindParam( ":twitter" , $_SESSION['twitter'] );
 	$query -> execute( array(':genreID' => $genreID));
 	$genreSingers = $query->fetchAll(PDO::FETCH_ASSOC);
+
+	$sql = "SELECT * FROM genres WHERE genre_id = :genreID";
+	$query = $db->prepare( $sql );
+	$query -> execute( array(':genreID' => $genreID));
+	$results = $query->fetch(PDO::FETCH_ASSOC);
+	$header = $results['genre_name'];
 
 } else {
 	$genreSingers = [];
@@ -59,6 +66,8 @@ if( isset($_GET['genreID']) ) {
 		</div>
 
 		<?php
+
+		echo $header;
 
 		$singerList = array_merge($searchData, $genreSingers);
 
