@@ -76,6 +76,7 @@ if( !isset($_GET['searchID']) ) {
 		// Prints all comments about singer ($searchComments is array of comments about $searchSinger)
 			// $searchSinger['singer_name'] is singer's name
 			// each row in $searchComments has attributes: singer_id, comment
+		echo "<img height='200px' src='_images/_singers/".$searchSinger["image"]."'/>";
 		echo "<h1>".$searchSinger['singer_name']."</h1>";
 		echo "<div class='comment'>";
 		foreach ($searchComments as $row){

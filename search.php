@@ -4,7 +4,7 @@
 	$db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 	$db -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-	$sql = "SELECT * FROM genres";
+	$sql = "SELECT * FROM genres ORDER BY genre_name";
 		$query = $db->prepare( $sql );
 		$query -> execute();
 		$genreData = $query->fetchAll(PDO::FETCH_ASSOC);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 06, 2016 at 06:26 PM
+-- Generation Time: Dec 13, 2016 at 04:52 AM
 -- Server version: 5.6.28
 -- PHP Version: 7.0.10
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `musicPlanet`
 --
+CREATE DATABASE IF NOT EXISTS `musicPlanet` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `musicPlanet`;
 
 -- --------------------------------------------------------
 
@@ -81,7 +83,14 @@ INSERT INTO `genres` (`genre_id`, `genre_name`) VALUES
 (5, 'Hip Hop'),
 (6, 'Punk'),
 (7, 'Electronic'),
-(8, 'Dance');
+(8, 'Dance'),
+(9, 'Metal'),
+(10, 'Reggae'),
+(11, 'Folk'),
+(12, 'Indie'),
+(13, 'Jazz'),
+(14, 'Country'),
+(15, 'Blues');
 
 -- --------------------------------------------------------
 
@@ -111,7 +120,79 @@ INSERT INTO `genres_to_singers` (`genre_id`, `singer_id`) VALUES
 (2, 5),
 (7, 5),
 (8, 5),
-(5, 6);
+(5, 6),
+(6, 7),
+(4, 7),
+(4, 8),
+(6, 8),
+(6, 9),
+(9, 9),
+(4, 10),
+(6, 10),
+(4, 11),
+(6, 11),
+(10, 12),
+(11, 12),
+(6, 12),
+(4, 12),
+(6, 13),
+(4, 13),
+(6, 14),
+(4, 14),
+(6, 15),
+(4, 15),
+(4, 16),
+(1, 17),
+(2, 17),
+(1, 18),
+(8, 18),
+(2, 18),
+(3, 18),
+(2, 19),
+(2, 20),
+(12, 20),
+(11, 21),
+(12, 21),
+(2, 22),
+(13, 23),
+(3, 23),
+(2, 23),
+(2, 24),
+(4, 24),
+(5, 25),
+(5, 26),
+(5, 27),
+(5, 28),
+(5, 29),
+(2, 30),
+(5, 30),
+(1, 31),
+(5, 31),
+(10, 31),
+(1, 32),
+(5, 32),
+(4, 33),
+(11, 33),
+(14, 33),
+(4, 34),
+(6, 34),
+(4, 35),
+(6, 35),
+(2, 36),
+(4, 36),
+(14, 36),
+(15, 36),
+(15, 34),
+(4, 37),
+(15, 37),
+(4, 37),
+(11, 37),
+(14, 37),
+(4, 39),
+(1, 40),
+(2, 40),
+(4, 40),
+(1, 41);
 
 -- --------------------------------------------------------
 
@@ -121,20 +202,56 @@ INSERT INTO `genres_to_singers` (`genre_id`, `singer_id`) VALUES
 
 CREATE TABLE `singers` (
   `singer_id` int(11) NOT NULL,
-  `singer_name` varchar(30) NOT NULL
+  `singer_name` varchar(30) NOT NULL,
+  `image` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `singers`
 --
 
-INSERT INTO `singers` (`singer_id`, `singer_name`) VALUES
-(1, 'Adele'),
-(2, 'Drake'),
-(3, 'Green Day'),
-(4, 'Simple Plan'),
-(5, 'Lady Gaga'),
-(6, 'Eminem');
+INSERT INTO `singers` (`singer_id`, `singer_name`, `image`) VALUES
+(1, 'Adele', ''),
+(2, 'Drake', 'Drake.png'),
+(3, 'Green Day', ''),
+(4, 'Simple Plan', ''),
+(5, 'Lady Gaga', ''),
+(6, 'Eminem', 'Eminem.png'),
+(7, 'Billy Joe Armstrong', 'BillieJoeArmstrong.png'),
+(8, 'Elvis Costello', 'ElvisCostello.png'),
+(9, 'Henry Rollins', 'HenryRollins.png'),
+(10, 'Ian MacKaye', 'IanMacKaye.png'),
+(11, 'Iggy Pop', 'IggyPop.png'),
+(12, 'Joe Strummer', 'JoeStrummer.png'),
+(13, 'Patti Smith', 'PattiSmith.png'),
+(14, 'John Lydon', 'JohnLydon.png'),
+(15, 'Sid Vicious', 'SidVicious.png'),
+(16, 'Kurt Cobain', 'KurtCobain.png'),
+(17, 'Beyonce', 'Beyonce.png'),
+(18, 'Christina Aguilera', 'ChristinaAguilera.png'),
+(19, 'Christina Grimmie', 'ChristinaGrimmie.png'),
+(20, 'Colette Carr', 'ColetteCarr.png'),
+(21, 'Ellie Goulding', 'EllieGoulding.png'),
+(22, 'Louis Tomlinson', 'LouisTomlinson.png'),
+(23, 'Stevie Wonder', 'StevieWonder.png'),
+(24, 'Michael Bolton', 'MichaelBolton.png'),
+(25, 'Dr. Dre', 'DrDre.png'),
+(26, 'Jay Z', 'JayZ.png'),
+(27, 'Kanye West', 'KanyeWest.png'),
+(28, 'Kendrick Lamar', 'KendrickLamar.png'),
+(29, 'Lil Wayne', 'LilWayne.png'),
+(30, 'Nicki Minaj', 'NickiMinaj.png'),
+(31, 'Snoop Dogg', 'SnoopDogg.png'),
+(32, 'P. Diddy', 'PDiddy.png'),
+(33, 'Bob Dylan', 'BobDylan.png'),
+(34, 'David Bowie', 'DavidBowie.png'),
+(35, 'Elton John', 'EltonJohn.png'),
+(36, 'Elvis Presley', 'ElvisPresley.png'),
+(37, 'Jimi Hendrix', 'JimiHendrix.png'),
+(38, 'Neil Young', 'NeilYoung.png'),
+(39, 'Paul McCartney', 'PaulMcCartney.png'),
+(40, 'Prince', 'Prince.png'),
+(41, 'The Weeknd', 'TheWeeknd.png');
 
 --
 -- Indexes for dumped tables
@@ -160,12 +277,12 @@ ALTER TABLE `singers`
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `singers`
 --
 ALTER TABLE `singers`
-  MODIFY `singer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `singer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
