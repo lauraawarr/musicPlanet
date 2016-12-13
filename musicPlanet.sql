@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 13, 2016 at 04:52 AM
+-- Generation Time: Dec 13, 2016 at 05:37 PM
 -- Server version: 5.6.28
 -- PHP Version: 7.0.10
 
@@ -211,11 +211,11 @@ CREATE TABLE `singers` (
 --
 
 INSERT INTO `singers` (`singer_id`, `singer_name`, `image`) VALUES
-(1, 'Adele', ''),
+(1, 'Adele', 'Adele.png'),
 (2, 'Drake', 'Drake.png'),
-(3, 'Green Day', ''),
-(4, 'Simple Plan', ''),
-(5, 'Lady Gaga', ''),
+(3, 'Green Day', 'GreenDay.png'),
+(4, 'Simple Plan', 'SimplePlan.png'),
+(5, 'Lady Gaga', 'LadyGaga.png'),
 (6, 'Eminem', 'Eminem.png'),
 (7, 'Billy Joe Armstrong', 'BillieJoeArmstrong.png'),
 (8, 'Elvis Costello', 'ElvisCostello.png'),
