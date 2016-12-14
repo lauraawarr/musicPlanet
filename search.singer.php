@@ -77,11 +77,17 @@ if( !isset($_GET['searchID']) ) {
 		// Prints all comments about singer ($searchComments is array of comments about $searchSinger)
 			// $searchSinger['singer_name'] is singer's name
 			// each row in $searchComments has attributes: singer_id, comment
+		$numComments = count($searchComments);
+		$selectedComments = [];
+		for ($i = 0; $i < min($numComments, 6); $i++){
+			$index = floor(rand(0, $numComments - 1));
+			array_push($selectedComments, $index);
+		};
 		
 		echo "<div class = 'img'>"."<img height='300px' src='_images/_singers/".$searchSinger["image"]."'/>"."<h1>".$searchSinger['singer_name']."</h1>"."</div>";
 		echo "<div class='comment'>";
-		foreach ($searchComments as $row){
-			echo "<p>".$row['comment']."</p>";
+		foreach ($selectedComments as $index){
+			echo "<p>".$searchComments[$index]['comment']."</p>";
 		};
 		echo "</div>";
 	?>
