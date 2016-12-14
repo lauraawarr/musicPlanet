@@ -7,10 +7,11 @@ function getRandomPosition(element) {
 
   var newX = x - imgW -element.clientWidth;
   var posX = img.getBoundingClientRect().left;
+  var newY = img.getBoundingClientRect().bottom -element.clientWidth;
   var tempX = Math.floor(Math.random()*newX);
 
   var randomX = (tempX >= posX-element.clientWidth) ? tempX + imgW + element.clientWidth: tempX;
-  var randomY = Math.floor(Math.random()*y);
+  var randomY = Math.floor(Math.random()*newY);
 
   return [randomX,randomY];
 }
