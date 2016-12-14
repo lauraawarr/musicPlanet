@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 13, 2016 at 05:37 PM
+-- Generation Time: Dec 14, 2016 at 06:25 PM
 -- Server version: 5.6.28
 -- PHP Version: 7.0.10
 
@@ -38,27 +38,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`singer_id`, `comment`) VALUES
-(2, 'He seems nice'),
-(4, 'They rock'),
-(4, 'They rock'),
-(4, 'I like them'),
-(4, 'I like them'),
-(4, 'I like them'),
-(4, 'I like them'),
-(4, 'I like them'),
-(4, 'I like them'),
-(1, 'She\'s pretty'),
-(1, 'She\'s pretty'),
-(1, 'She\'s pretty'),
-(1, 'Love her voice'),
-(1, 'Love her voice'),
-(1, 'HELLO'),
-(1, 'HELLO'),
-(0, 'It\'s me'),
-(0, 'It\'s me'),
-(1, 'It\'s me'),
-(1, 'She seems nice'),
-(1, 'I like her hair');
+(2, 'hello'),
+(2, 'I like his music');
 
 -- --------------------------------------------------------
 
@@ -183,7 +164,6 @@ INSERT INTO `genres_to_singers` (`genre_id`, `singer_id`) VALUES
 (14, 36),
 (15, 36),
 (15, 34),
-(4, 37),
 (15, 37),
 (4, 37),
 (11, 37),
