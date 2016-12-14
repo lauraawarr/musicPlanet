@@ -75,15 +75,25 @@ if( !isset($_GET['searchID']) ) {
 
 	<?php 
 		// Prints all comments about singer ($searchComments is array of comments about $searchSinger)
-			// $searchSinger['singer_name'] is singer's name
-			// each row in $searchComments has attributes: singer_id, comment
+		// $searchSinger['singer_name'] is singer's name
+		// each row in $searchComments has attributes: singer_id, comment
+		global $selectedComments, $numComments;
 		$numComments = count($searchComments);
 		$selectedComments = [];
 		for ($i = 0; $i < min($numComments, 6); $i++){
 			$index = floor(rand(0, $numComments - 1));
-			array_push($selectedComments, $index);
+			isDuplicate($index);
 		};
-		
+
+		function isDuplicate($num){
+			global $selectedComments, $numComments;
+			if (in_array($num, $selectedComments)){
+				isDuplicate(floor(rand(0, $numComments - 1)));
+			} else {
+				array_push($selectedComments, $num);
+			};
+		}; //end isDuplicate
+
 		echo "<div class = 'img'>"."<img height='300px' src='_images/_singers/".$searchSinger["image"]."'/>"."<h1>".$searchSinger['singer_name']."</h1>"."</div>";
 		echo "<div class='comment'>";
 		foreach ($selectedComments as $index){
