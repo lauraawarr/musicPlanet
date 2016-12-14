@@ -7,6 +7,31 @@ if( !isset($_GET['searchID']) ) {
 	header('Location: search.php');
 } else {
 	$searchID = $_GET['searchID'];
+
+	// Inserts user input into database 
+	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+		// Checks if comment is already in databse
+		if(!empty($_POST['newComment'])){
+
+			$newComment = $_POST['newComment'];
+			$sql = "SELECT * FROM comments
+					WHERE comment = :newComment
+					AND singer_id = :singer_id";
+			$query = $db->prepare( $sql );
+			$query -> execute( array(':newComment' => $newComment, ':singer_id'=> $searchID));
+			$duplicate = $query->fetchAll(PDO::FETCH_ASSOC);
+
+			// Does not insert into table if duplicate
+			if (empty($duplicate)){
+
+				$sql = "INSERT INTO comments (singer_id, comment) VALUES (:searchID, :newComment)";
+				$query = $db->prepare( $sql );
+				$query -> execute([':searchID' => $searchID, ':newComment' => $newComment]);
+
+			}; // end duplicate
+		}; //end isset newComment
+	};
+
 	$sql = "SELECT * FROM singers
 			INNER JOIN comments
 			ON (singers.singer_id = comments.singer_id) 
@@ -54,29 +79,6 @@ if( !isset($_GET['searchID']) ) {
 	<!-- This is the main content -->
 
 	<?php 
-		// This inserts user input into database 
-		if ($_SERVER["REQUEST_METHOD"] == "POST"){
-			// Checks if comment is already in databse
-			if(!empty($_POST['newComment'])){
-
-				$newComment = $_POST['newComment'];
-				$sql = "SELECT * FROM comments
-						WHERE comment = :newComment
-						AND singer_id = :singer_id";
-				$query = $db->prepare( $sql );
-				$query -> execute( array(':newComment' => $newComment, ':singer_id'=> $searchSinger['singer_id']));
-				$duplicate = $query->fetchAll(PDO::FETCH_ASSOC);
-				
-				// Does not insert into table if duplicate
-				if (empty($duplicate)){
-
-					$sql = "INSERT INTO comments (singer_id, comment) VALUES (:searchID, :newComment)";
-					$query = $db->prepare( $sql );
-					$query -> execute([':searchID' => $searchID, ':newComment' => $newComment]);
-
-				}; // end duplicate
-			}; //end isset newComment
-		};
 		// Prints all comments about singer ($searchComments is array of comments about $searchSinger)
 			// $searchSinger['singer_name'] is singer's name
 			// each row in $searchComments has attributes: singer_id, comment
