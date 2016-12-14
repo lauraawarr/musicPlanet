@@ -1,23 +1,15 @@
 <?php
-<<<<<<< HEAD
-//$db = new PDO('mysql:host=localhost;dbname=musicPlanet;charset=utf8','root','');
 $db = new PDO('mysql:host=localhost;dbname=warrla_musicPlanet;charset=utf8','warrla_user','musicPlanetUser123');
-=======
-$db = new PDO('mysql:host=localhost;dbname=musicpPlanet;charset=utf8','root','root');
->>>>>>> 2f15471522603f350e2159c84d70e18986f4120e
 $db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $db -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
 $sql = "SELECT * FROM genres ORDER BY genre_name";
 	$query = $db->prepare( $sql );
 	$query -> execute();
 	$genreData = $query->fetchAll(PDO::FETCH_ASSOC);
-
 // Redirects user back to search page if no genre ID or searchName are set
 if((!isset($_GET['searchName']))&&(!isset($_GET['genreID']))){
 	header('Location: search.php');
 };
-
 if( isset($_GET['searchName']) ) {
 	$searchName = $_GET['searchName'];
 	$sql = "SELECT * FROM singers WHERE singer_name LIKE :name";
@@ -69,8 +61,6 @@ if( isset($_GET['genreID']) ) {
 		<!-- navigation  -->
 		<div class='nav'>
 			<div><a href='search.php'><img src="_images/backbro.png"/></a></div>
-<<<<<<< HEAD
-=======
 		</div>
 		<!-- genre_title -->
 		<div class="genre_title">
@@ -127,7 +117,6 @@ if( isset($_GET['genreID']) ) {
 		<!-- navigation  -->
 		<div class='nav'>
 			<div><a href='search.php'><img src="http://localhost/assign2/assets/backbro.png"/></a></div>
->>>>>>> 2f15471522603f350e2159c84d70e18986f4120e
 		</div>
 		<!-- genre_title -->
 		<div class="genre_title">
@@ -186,21 +175,15 @@ if( isset($_GET['genreID']) ) {
 		</div>
 
 		<?php
-
 		echo $header;
-
 		$singerList = array_merge($searchData, $genreSingers);
-
 		// This prints list of singers matching search values (available attributes: singer_id, singer_name)
 		foreach ($singerList as $singer) {
 			echo "<div class='singer'>";
-
 			// Edit content of each singer div here
 			echo "<a href='search.singer.php?searchID=".$singer['singer_id']."'>".$singer['singer_name']."</a>";
-
 			echo "</div>";
 		};
-
 		?>
 
 	</div>
