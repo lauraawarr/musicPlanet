@@ -1,106 +1,140 @@
-<?php
-$db = new PDO('mysql:host=localhost;dbname=musicPlanet;charset=utf8','root','');
-$db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-$db -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+body{
+    background-image:url("../_images/groupdesign-layout2.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: purple;
 
-$sql = "SELECT * FROM genres ORDER BY genre_name";
-	$query = $db->prepare( $sql );
-	$query -> execute();
-	$genreData = $query->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-// Redirects user back to search page if no genre ID or searchName are set
-if((!isset($_GET['searchName']))&&(!isset($_GET['genreID']))){
-	header('Location: search.php');
-};
+#main-browse{
+	width:100%;
 
-if( isset($_GET['searchName']) ) {
-	$searchName = $_GET['searchName'];
-	$sql = "SELECT * FROM singers WHERE singer_name LIKE :name";
-	$query = $db->prepare( $sql );
-	//$query->bindParam( ":twitter" , $_SESSION['twitter'] );
-	$query -> execute( array(':name' => "%".$searchName."%"));
-	$searchData = $query->fetchAll(PDO::FETCH_ASSOC);
-	$header = "Results";
-} else {
-	$searchData = [];
-};
-if( isset($_GET['genreID']) ) {
-	$genreID = $_GET['genreID'];
-	$sql = "SELECT * FROM genres_to_singers 
-			INNER JOIN singers 
-			ON (singers.singer_id = genres_to_singers.singer_id)
-			INNER JOIN genres
-			ON (genres.genre_id = genres_to_singers.genre_id)
-			WHERE genres.genre_id = :genreID";
-	$query = $db->prepare( $sql );
-	$query -> execute( array(':genreID' => $genreID));
-	$genreSingers = $query->fetchAll(PDO::FETCH_ASSOC);
-	$sql = "SELECT * FROM genres WHERE genre_id = :genreID";
-	$query = $db->prepare( $sql );
-	$query -> execute( array(':genreID' => $genreID));
-	$results = $query->fetch(PDO::FETCH_ASSOC);
-	$header = $results['genre_name'];
-} else {
-	$genreSingers = [];
-};
-?>
+}
+.nav{
+ 
+  display: flex;
+  flex-direction:row;
+  justify-content:space-between;
+}
+.nav,#show-hidden{ 
+  margin:10px 20px;
+	opacity: 1.0;
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Music Planet</title>
-	<link rel='stylesheet' href='_css/main.css' />
-	<link rel='stylesheet' href='_css/browse.css' />
-	<link href="https://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	}
 
-</head>
+span .navButton{
+text-decoration: none;
 
-<body class='row'>
+}
+a:hover {
+     opacity: 0.5;
+}
 
-	<!-- This is the main browse div (put all browse content in here) -->
-
-	<div id='main-browse' class='column'>
-		<!-- navigation  -->
-		<div class='nav'>
-			<div><a href='search.php'><img src="_images/backbro.png"/></a></div>
-		</div>
-		<!-- genre_title -->
-		<div class="genre_title">
-			<?php  
-				echo"<div class='titles'>";
- 				echo strtoupper($header);
-			 	echo"</div>";
-			 ?>
-		</div>
-		<!-- singers -->
-			<div class="container1">			
-					 <div class="grid">  
-
-					 		<?php
-								$singerList = array_merge($searchData, $genreSingers);
-								// This prints list of singers matching search values (available attributes: singer_id, singer_name)
-								foreach ($singerList as $singer) {
-									echo "<div class='singer'>";
-									// Edit content of each singer div here
-									echo "<a href='search.singer.php?searchID=".$singer['singer_id']."'>";
-									echo "<figure><img class='pic' src='_images/_singers/".$singer["image"]."'width='200px' height='200px' /></figure>";
-									echo "<figcaption>".$singer['singer_name']."</figcaption></a>";
-									echo "</div>";
-								};
-							?>			
-				   		     		
-				  	</div>
-			</div>
-		
-		
-
-	</div>
-	<!-- End of main browse div -->
-
-<?php include('sidebar.php'); ?>
+a:link{
+	 margin:10px 20px;
+	 text-decoration: none;
+}
+.genre_title{
    
+     margin-bottom: 0;
+}
+/*-- genre_title websize media query----*/
+@media (min-width: 1000px) and (max-width: 1300px){
+.titles{
+   margin-left: 450px;
+	}
+}
+@media (min-width: 700px) and (max-width: 1000px){
+.titles{
+   margin-left: 320px;
+	}
+}
+@media (min-width: 600px) and (max-width: 700px){
+.titles{
+   margin-left: 220px;
+	}
+}
+@media (min-width: 300px) and (max-width: 600px){
+.titles{
+   margin-left: 75px;
+	}
+}
+@media (min-width: 0px) and (max-width: 300px){
+.titles{
+   margin-left: 20px;
+	}
+}
 
-</body>
-<script src='_scripts/main.js'></script>
-</html>
+/*--------------singers_column----------------------*/
+
+.container1{
+  margin-left: 190px;
+  margin-bottom: 55px;
+}
+
+.grid{
+    max-width: 1000px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: center;
+     justify-content: center;
+}
+.singer {
+    min-width: 250px;
+    max-width: 250px;
+
+}
+.singer figure {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.singer figure img {
+  display: block;
+  max-width: 100%;
+}
+
+.singer figcaption {
+  display: block;
+  padding: .625rem .5rem;
+ 
+}
+
+figcaption{
+	color:white;
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+  text-align: center;
+
+}
+.titles{   
+    margin-left: 150px;
+     margin-bottom: 0;
+     padding: 20px;
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+ 
+/*-----------------singers effects-------------------*/
+.pic{ transition: all .2s ease-in-out; }
+.pic:hover { transform: scale(1.1); }
+.pic{
+
+}
+/*-- mobile media query----*/
+@media (min-width: 0px) and (max-width: 360px){
+.grid{
+   width: 20%;
+   height: 20%;
+
+  }
+}
