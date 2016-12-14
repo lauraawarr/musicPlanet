@@ -116,7 +116,7 @@ if( isset($_GET['genreID']) ) {
 	<div id='main-browse' class='column'>
 		<!-- navigation  -->
 		<div class='nav'>
-			<div><a href='search.php'><img src="http://localhost/assign2/assets/backbro.png"/></a></div>
+			<div><a href='search.php'><img src="../_images/backbro.png"/></a></div>
 		</div>
 		<!-- genre_title -->
 		<div class="genre_title">
