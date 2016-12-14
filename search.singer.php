@@ -98,4 +98,3 @@ if( !isset($_GET['searchID']) ) {
 
 </body>
 </html>
-Contact GitHub API Training Shop Blog About
