@@ -1,5 +1,6 @@
 <?php 
-	$db = new PDO('mysql:host=localhost;dbname=musicplanet;charset=utf8','root','');
+	//$db = new PDO('mysql:host=localhost;dbname=musicplanet;charset=utf8','root','');
+	$db = new PDO('mysql:host=localhost;dbname=warrla_musicPlanet;charset=utf8','warrla_user','musicPlanetUser123');
 	//set error mode, which allows errors to be thrown, rather than silently ignored
 	$db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 	$db -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

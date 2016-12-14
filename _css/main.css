@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background:url("../images/main-bg.jpg") no-repeat 100% 100%;
+	background:url("../_images/main-bg.jpg") no-repeat 100% 100%;
 	background-size: cover;
 	height:960px;
 	justify-content: space-between;
@@ -12,7 +12,7 @@ body {
 
 @font-face {
     font-family: 'Kocoon-Light';
-    src: url(../fonts/Kocoon-Light.otf) format('opentype');
+    src: url('../fonts/Kocoon-Light.otf') format('opentype');
 }
 
 .row {
@@ -70,7 +70,7 @@ div{
 	border:2px solid #ccc;
 	border-radius: 4px;
 	background-color: white;
-	background-image:  url(../images/search-white.png);
+	background-image:  url('../images/search-white.png');
     background-position: 0px;
     background-repeat: no-repeat;
     padding:12px 20px 12px 45px;

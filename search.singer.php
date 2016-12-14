@@ -1,5 +1,6 @@
 <?php
-$db = new PDO('mysql:host=localhost;dbname=musicPlanet;charset=utf8','root','root');
+//$db = new PDO('mysql:host=localhost;dbname=musicPlanet;charset=utf8','root','root');
+$db = new PDO('mysql:host=localhost;dbname=warrla_musicPlanet;charset=utf8','warrla_user','musicPlanetUser123');
 $db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $db -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 //if no singer is set, redirect to search page
@@ -63,7 +64,7 @@ if( !isset($_GET['searchID']) ) {
 
 	<!-- Main nav bar -->
 	<div class='nav'>
-		<a href='search.php'><img src="./_images/backbro.png"></a>
+		<a href='search.php'><img src="_images/backbro.png"></a>
 	</div>
 	<!-- End main nav bar -->
 

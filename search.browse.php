@@ -1,5 +1,6 @@
 <?php
-$db = new PDO('mysql:host=localhost;dbname=musicPlanet;charset=utf8','root','');
+//$db = new PDO('mysql:host=localhost;dbname=musicPlanet;charset=utf8','root','');
+$db = new PDO('mysql:host=localhost;dbname=warrla_musicPlanet;charset=utf8','warrla_user','musicPlanetUser123');
 $db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $db -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
@@ -63,7 +64,7 @@ if( isset($_GET['genreID']) ) {
 	<div id='main-browse' class='column'>
 		<!-- navigation  -->
 		<div class='nav'>
-			<div><a href='search.php'><img src="http://localhost/assign2/assets/backbro.png"/></a></div>
+			<div><a href='search.php'><img src="_images/backbro.png"/></a></div>
 		</div>
 		<!-- genre_title -->
 		<div class="genre_title">
