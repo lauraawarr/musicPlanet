@@ -127,6 +127,69 @@ figcaption{
 /*-----------------singers effects-------------------*/
 .pic{ transition: all .2s ease-in-out; }
 .pic:hover { transform: scale(1.1); }
+
+/*-- mobile media query----*/
+@media (min-width: 0px) and (max-width: 360px){
+.grid{
+   width: 20%;
+   height: 20%;
+
+  }
+}
+    max-width: 1000px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: center;
+     justify-content: center;
+}
+.singer {
+    min-width: 250px;
+    max-width: 250px;
+
+}
+.singer figure {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.singer figure img {
+  display: block;
+  max-width: 100%;
+}
+
+.singer figcaption {
+  display: block;
+  padding: .625rem .5rem;
+ 
+}
+
+figcaption{
+	color:white;
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+  text-align: center;
+
+}
+.titles{   
+    margin-left: 150px;
+     margin-bottom: 0;
+     padding: 20px;
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+ 
+/*-----------------singers effects-------------------*/
+.pic{ transition: all .2s ease-in-out; }
+.pic:hover { transform: scale(1.1); }
 .pic{
 
 }
