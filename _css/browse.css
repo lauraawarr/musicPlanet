@@ -1,0 +1,139 @@
+body{
+    background-image:url(../assets/groupdesign-layout2.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: purple;
+
+    }
+
+#main-browse{
+	width:100%;
+
+}
+.nav{
+ 
+  display: flex;
+  flex-direction:row;
+  justify-content:space-between;
+}
+.nav,#show-hidden{ 
+  margin:10px 20px;
+	opacity: 1.0;
+
+	}
+
+span .navButton{
+text-decoration: none;
+
+}
+a:hover {
+     opacity: 0.5;
+}
+
+a:link{
+	 margin:10px 20px;
+	 text-decoration: none;
+}
+.genre_title{
+   
+     margin-bottom: 0;
+}
+/*-- genre_title websize media query----*/
+@media (min-width: 1000px) and (max-width: 1300px){
+.titles{
+   margin-left: 450px;
+	}
+}
+@media (min-width: 700px) and (max-width: 1000px){
+.titles{
+   margin-left: 320px;
+	}
+}
+@media (min-width: 600px) and (max-width: 700px){
+.titles{
+   margin-left: 220px;
+	}
+}
+@media (min-width: 300px) and (max-width: 600px){
+.titles{
+   margin-left: 75px;
+	}
+}
+@media (min-width: 0px) and (max-width: 300px){
+.titles{
+   margin-left: 20px;
+	}
+}
+
+/*--------------singers_column----------------------*/
+.container1{
+  margin-left: 190px;
+  margin-bottom: 35px;
+}
+
+.grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: center;
+     justify-content: center;
+}
+.singer {
+    min-width: 250px;
+    max-width: 250px;
+
+}
+.singer figure {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.singer figure img {
+  display: block;
+  max-width: 100%;
+}
+
+.singer figcaption {
+  display: block;
+  padding: .625rem .5rem;
+ 
+}
+
+figcaption{
+	color:white;
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+  text-align: center;
+
+}
+.titles{   
+    margin-left: 150px;
+     margin-bottom: 0;
+     padding: 20px;
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+ 
+/*-----------------singers effects-------------------*/
+.pic{ transition: all .2s ease-in-out; }
+.pic:hover { transform: scale(1.1); }
+.pic{
+
+}
+/*-- mobile media query----*/
+@media (min-width: 0px) and (max-width: 360px){
+.grid{
+   width: 20%;
+   height: 20%;
+
+  }
+}
