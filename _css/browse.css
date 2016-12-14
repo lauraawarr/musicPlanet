@@ -127,9 +127,7 @@ figcaption{
 /*-----------------singers effects-------------------*/
 .pic{ transition: all .2s ease-in-out; }
 .pic:hover { transform: scale(1.1); }
-.pic{
 
-}
 /*-- mobile media query----*/
 @media (min-width: 0px) and (max-width: 360px){
 .grid{
