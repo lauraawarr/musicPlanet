@@ -7,12 +7,10 @@ if( !isset($_GET['searchID']) ) {
 	header('Location: search.php');
 } else {
 	$searchID = $_GET['searchID'];
-
 	// Inserts user input into database 
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		// Checks if comment is already in databse
 		if(!empty($_POST['newComment'])){
-
 			$newComment = $_POST['newComment'];
 			$sql = "SELECT * FROM comments
 					WHERE comment = :newComment
@@ -20,18 +18,14 @@ if( !isset($_GET['searchID']) ) {
 			$query = $db->prepare( $sql );
 			$query -> execute( array(':newComment' => $newComment, ':singer_id'=> $searchID));
 			$duplicate = $query->fetchAll(PDO::FETCH_ASSOC);
-
 			// Does not insert into table if duplicate
 			if (empty($duplicate)){
-
 				$sql = "INSERT INTO comments (singer_id, comment) VALUES (:searchID, :newComment)";
 				$query = $db->prepare( $sql );
 				$query -> execute([':searchID' => $searchID, ':newComment' => $newComment]);
-
 			}; // end duplicate
 		}; //end isset newComment
 	};
-
 	$sql = "SELECT * FROM singers
 			INNER JOIN comments
 			ON (singers.singer_id = comments.singer_id) 
@@ -62,7 +56,7 @@ if( !isset($_GET['searchID']) ) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Music Planet</title>
 	<link rel='stylesheet' href='_css/singer.css' />
-	<script src='_scripts/myJs.js'></script>
+	<script src='_scripts/myJs1.js'></script>
 </head>
 
 <body>
@@ -83,8 +77,7 @@ if( !isset($_GET['searchID']) ) {
 			// $searchSinger['singer_name'] is singer's name
 			// each row in $searchComments has attributes: singer_id, comment
 		
-		echo "<div class = 'img'>"."<img height='400px' src='_images/_singers/".$searchSinger["image"]."'/>"."</div>";
-		echo "<h1>".$searchSinger['singer_name']."</h1>";
+		echo "<div class = 'img'>"."<img height='300px' src='_images/_singers/".$searchSinger["image"]."'/>"."<h1>".$searchSinger['singer_name']."</h1>"."</div>";
 		echo "<div class='comment'>";
 		foreach ($searchComments as $row){
 			echo "<p>".$row['comment']."</p>";
@@ -95,7 +88,7 @@ if( !isset($_GET['searchID']) ) {
 	<!-- Takes in user input comments -->
 	<div class="form">
 	<form method='POST' action='search.singer.php?searchID=<?php echo $searchSinger["singer_id"]?>'>
-		<input name='newComment' type='text'></input>
+		<input name='newComment' type='text' maxlength='18' placeholder="Add your comment here.." required></input>
 		<input name='commentSubmit' type='submit' value='Post' class='submit' required />
 	</form>
 	</div>
@@ -105,3 +98,4 @@ if( !isset($_GET['searchID']) ) {
 
 </body>
 </html>
+Contact GitHub API Training Shop Blog About
