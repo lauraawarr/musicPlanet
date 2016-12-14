@@ -42,17 +42,22 @@ if( !isset($_GET['searchID']) ) {
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Music Planet</title>
-	<link rel='stylesheet' href='_css/main.css' />
+	<link rel='stylesheet' href='_css/singer.css' />
+	<script src='_scripts/myJs.js'></script>
 </head>
 
 <body>
 
 	<!-- Main nav bar -->
 	<div class='nav'>
-		<a href='search.php'>BACK</a>
+		<a href='search.php'><img src="./_images/backbro.png"></a>
 	</div>
 	<!-- End main nav bar -->
+
+	<div id="main">
 
 
 	<!-- This is the main content -->
@@ -76,8 +81,8 @@ if( !isset($_GET['searchID']) ) {
 		// Prints all comments about singer ($searchComments is array of comments about $searchSinger)
 			// $searchSinger['singer_name'] is singer's name
 			// each row in $searchComments has attributes: singer_id, comment
-		echo "<img height='200px' src='_images/_singers/".$searchSinger["image"]."'/>";
-		echo "<h1>".$searchSinger['singer_name']."</h1>";
+		
+		echo "<div class = 'img'>"."<img height='300px' src='_images/_singers/".$searchSinger["image"]."'/>"."<h1>".$searchSinger['singer_name']."</h1>"."</div>";
 		echo "<div class='comment'>";
 		foreach ($searchComments as $row){
 			echo "<p>".$row['comment']."</p>";
@@ -87,10 +92,13 @@ if( !isset($_GET['searchID']) ) {
 	?>
 
 	<!-- Takes in user input comments -->
+	<div class="form">
 	<form method='POST' action='search.singer.php?searchID=<?php echo $searchSinger["singer_id"]?>'>
-		<input name='newComment' type='text'></input>
-		<input name='commentSubmit' type='submit' />
+		<input name='newComment' type='text' placeholder="Add your comment here..."></input>
+		<input name='commentSubmit' type='submit' value='Post' class='submit' required />
 	</form>
+	</div>
+	</div>
 
 	<!-- End of main content -->
 
