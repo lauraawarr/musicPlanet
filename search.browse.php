@@ -15,7 +15,9 @@ if((!isset($_GET['searchName']))&&(!isset($_GET['genreID']))){
 
 if( isset($_GET['searchName']) ) {
 	$searchName = $_GET['searchName'];
-	$sql = "SELECT * FROM singers WHERE singer_name LIKE :name";
+	$sql = "SELECT * FROM singers 
+			WHERE singer_name LIKE :name
+			ORDER BY singer_name";
 	$query = $db->prepare( $sql );
 	//$query->bindParam( ":twitter" , $_SESSION['twitter'] );
 	$query -> execute( array(':name' => "%".$searchName."%"));
@@ -27,11 +29,12 @@ if( isset($_GET['searchName']) ) {
 if( isset($_GET['genreID']) ) {
 	$genreID = $_GET['genreID'];
 	$sql = "SELECT * FROM genres_to_singers 
-	INNER JOIN singers 
-	ON (singers.singer_id = genres_to_singers.singer_id)
-	INNER JOIN genres
-	ON (genres.genre_id = genres_to_singers.genre_id)
-	WHERE genres.genre_id = :genreID";
+			INNER JOIN singers 
+			ON (singers.singer_id = genres_to_singers.singer_id)
+			INNER JOIN genres
+			ON (genres.genre_id = genres_to_singers.genre_id)
+			WHERE genres.genre_id = :genreID
+			ORDER BY singer_name";
 	$query = $db->prepare( $sql );
 	$query -> execute( array(':genreID' => $genreID));
 	$genreSingers = $query->fetchAll(PDO::FETCH_ASSOC);
