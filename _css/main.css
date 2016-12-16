@@ -170,10 +170,10 @@ div{
 }
 
 .orbit {
-	-moz-transition: all 1000ms linear;
-	-webkit-transition: all 1000ms linear;
-	-o-transition: all 1000ms linear;
-	transition: all 1000ms linear;
+	-moz-transition: all 2000ms linear;
+	-webkit-transition: all 2000ms linear;
+	-o-transition: all 2000ms linear;
+	transition: all 2000ms linear;
 	z-index: -1;
 	background: url('../_images/star1.png');
 	position: absolute;
@@ -221,10 +221,10 @@ div{
 }
 
 .orbit-two {
-	-moz-transition: all 1000ms linear;
-	-webkit-transition: all 1000ms linear;
-	-o-transition: all 1000ms linear;
-	transition: all 1000ms linear;
+	-moz-transition: all 2000ms linear;
+	-webkit-transition: all 2000ms linear;
+	-o-transition: all 2000ms linear;
+	transition: all 2000ms linear;
 	z-index: -1;
 	background: url('../_images/star1.png');
 	position: absolute;
@@ -272,10 +272,10 @@ div{
 }
 
 .orbit-three {
-	-moz-transition: all 1000ms linear;
-	-webkit-transition: all 1000ms linear;
-	-o-transition: all 1000ms linear;
-	transition: all 1000ms linear;
+	-moz-transition: all 2000ms linear;
+	-webkit-transition: all 2000ms linear;
+	-o-transition: all 2000ms linear;
+	transition: all 2000ms linear;
 	z-index: -1;
 	background: url('../_images/star1.png');
 	position: absolute;
