@@ -4,7 +4,7 @@
 	<!-- This is the button that shows hidden bar -->
 	 <div id='show-hidden'>
 		<a href='#'>
-			<span class="navButton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Genre</span>
+			<span class="navButton" style="font-size:30px;cursor:pointer">&#9776; Genre</span>
 		</a>
 	</div>
  
