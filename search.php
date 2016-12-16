@@ -79,5 +79,5 @@
 
 </body>
 <script src='_scripts/main.js'></script>
-<script src='_scripts/follow.js'></script>
+<script src='_scripts/animate.js'></script>
 </html>
