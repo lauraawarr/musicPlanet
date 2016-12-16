@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.0.10.14
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:8889
--- Generation Time: Dec 14, 2016 at 06:25 PM
--- Server version: 5.6.28
--- PHP Version: 7.0.10
+-- Host: localhost:3306
+-- Generation Time: Dec 16, 2016 at 11:17 AM
+-- Server version: 5.5.52-cll
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `warrla_musicPlanet`
+--
 
 -- --------------------------------------------------------
 
@@ -22,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `comments`
 --
 
-CREATE TABLE `comments` (
+CREATE TABLE IF NOT EXISTS `comments` (
   `singer_id` int(11) NOT NULL,
   `comment` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -33,7 +37,36 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`singer_id`, `comment`) VALUES
 (2, 'hello'),
-(2, 'I like his music');
+(2, 'I like his music'),
+(1, 'I like her hair'),
+(1, 'Great concerts!'),
+(20, 'Sweet look'),
+(20, 'Awesome hair'),
+(23, 'Wonderful!'),
+(41, 'Very relaxing'),
+(41, 'Weird hair...'),
+(11, 'sexy voice'),
+(5, 'crazyyyy'),
+(5, '头太白啦!!!!!'),
+(5, 'lalalala'),
+(34, 'Cool face'),
+(34, 'Big head'),
+(34, 'HERO!'),
+(34, 'Wear clothes!!'),
+(34, 'Classic!'),
+(34, 'Ni hao!'),
+(34, 'AMAZING!!!'),
+(5, 'yeeeeeeeeeeeeeee'),
+(4, 'happy to see u'),
+(6, 'Love him!'),
+(6, 'Very cool'),
+(31, 'so gangsta'),
+(15, 'so vicious'),
+(23, 'jazzzzy'),
+(9, 'metaaallll'),
+(36, 'groovy baby'),
+(50, 'wicked beats '),
+(50, 'sweet vibes');
 
 -- --------------------------------------------------------
 
@@ -41,10 +74,11 @@ INSERT INTO `comments` (`singer_id`, `comment`) VALUES
 -- Table structure for table `genres`
 --
 
-CREATE TABLE `genres` (
-  `genre_id` int(11) NOT NULL,
-  `genre_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `genres` (
+  `genre_id` int(11) NOT NULL AUTO_INCREMENT,
+  `genre_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`genre_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `genres`
@@ -61,7 +95,6 @@ INSERT INTO `genres` (`genre_id`, `genre_name`) VALUES
 (8, 'Dance'),
 (9, 'Metal'),
 (10, 'Reggae'),
-(11, 'Folk'),
 (12, 'Indie'),
 (13, 'Jazz'),
 (14, 'Country'),
@@ -73,7 +106,7 @@ INSERT INTO `genres` (`genre_id`, `genre_name`) VALUES
 -- Table structure for table `genres_to_singers`
 --
 
-CREATE TABLE `genres_to_singers` (
+CREATE TABLE IF NOT EXISTS `genres_to_singers` (
   `genre_id` int(11) NOT NULL,
   `singer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -107,7 +140,6 @@ INSERT INTO `genres_to_singers` (`genre_id`, `singer_id`) VALUES
 (4, 11),
 (6, 11),
 (10, 12),
-(11, 12),
 (6, 12),
 (4, 12),
 (6, 13),
@@ -126,7 +158,6 @@ INSERT INTO `genres_to_singers` (`genre_id`, `singer_id`) VALUES
 (2, 19),
 (2, 20),
 (12, 20),
-(11, 21),
 (12, 21),
 (2, 22),
 (13, 23),
@@ -147,12 +178,10 @@ INSERT INTO `genres_to_singers` (`genre_id`, `singer_id`) VALUES
 (1, 32),
 (5, 32),
 (4, 33),
-(11, 33),
 (14, 33),
 (4, 34),
 (6, 34),
 (4, 35),
-(6, 35),
 (2, 36),
 (4, 36),
 (14, 36),
@@ -160,13 +189,29 @@ INSERT INTO `genres_to_singers` (`genre_id`, `singer_id`) VALUES
 (15, 34),
 (15, 37),
 (4, 37),
-(11, 37),
 (14, 37),
 (4, 39),
 (1, 40),
 (2, 40),
 (4, 40),
-(1, 41);
+(1, 41),
+(1, 42),
+(2, 42),
+(3, 42),
+(1, 43),
+(2, 43),
+(3, 44),
+(13, 44),
+(3, 45),
+(13, 45),
+(15, 45),
+(7, 46),
+(2, 47),
+(14, 47),
+(14, 48),
+(14, 49),
+(7, 50),
+(15, 35);
 
 -- --------------------------------------------------------
 
@@ -174,11 +219,12 @@ INSERT INTO `genres_to_singers` (`genre_id`, `singer_id`) VALUES
 -- Table structure for table `singers`
 --
 
-CREATE TABLE `singers` (
-  `singer_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `singers` (
+  `singer_id` int(11) NOT NULL AUTO_INCREMENT,
   `singer_name` varchar(30) NOT NULL,
-  `image` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `image` varchar(30) NOT NULL,
+  PRIMARY KEY (`singer_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
 
 --
 -- Dumping data for table `singers`
@@ -225,38 +271,17 @@ INSERT INTO `singers` (`singer_id`, `singer_name`, `image`) VALUES
 (38, 'Neil Young', 'NeilYoung.png'),
 (39, 'Paul McCartney', 'PaulMcCartney.png'),
 (40, 'Prince', 'Prince.png'),
-(41, 'The Weeknd', 'TheWeeknd.png');
+(41, 'The Weeknd', 'TheWeeknd.png'),
+(42, 'Sam Smith', 'SamSmith.png'),
+(43, 'Justin Bieber', 'JustinBieber.png'),
+(44, 'Aretha Franklin', 'ArethaFranklin.png'),
+(45, 'Ray Charles', 'RayCharles.png'),
+(46, 'deadmau5', 'deadmau5.png'),
+(47, 'Taylor Swift', 'TaylorSwift.png'),
+(48, 'Brad Paisley', 'BradPaisley.png'),
+(49, 'Keith Urban', 'KeithUrban.png'),
+(50, 'Daft Punk', 'DaftPunk.png');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `genres`
---
-ALTER TABLE `genres`
-  ADD PRIMARY KEY (`genre_id`);
-
---
--- Indexes for table `singers`
---
-ALTER TABLE `singers`
-  ADD PRIMARY KEY (`singer_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `genres`
---
-ALTER TABLE `genres`
-  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `singers`
---
-ALTER TABLE `singers`
-  MODIFY `singer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
